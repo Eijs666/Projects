@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Learn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>JSON Learn</h1>
+    </header>
+
+    <nav id="navbar">
+        <div class="container">
+            <ul>
+                <li> <a href="index.html">News</a></li>
+                <li> <a href="#">Culture</a></li>
+                <li> <a href="#">Sport</a></li>
+                <li> <a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="create-post">
+        <h2>Create an article</h2>
+
+        <input type="text" placeholder="Article title" id="artTitle">
+        <input type="text" placeholder="Article body" id="artBody">
+        <button id="postArt">Submit Article</button>
+    </div>
+ 
+
+    <div id="post-container">
+        <h2>Recent Articles</h2>
+        <div id="posts">
+            <h4>NEWS - </h4>
+            <h3>The very first article written by...</h2>
+            <p>This is an article body. This is an article body.
+                This is an article body. This is an article body.
+                This is an article body. This is an article body.
+                This is an article body. This is an article body.
+                This is an article body. This is an article body.
+                This is an article body. This is an article body.
+                This is an article body. This is an article body.
+                This is an article body. This is an article body.
+            </p>
+
+            <div class="like-row">
+                <h3 id="like-counter"></h3>
+                <h3 id="dislike-counter"></h3>
+                <button id="like-button">Like👍</button>
+                <button id="dislike-button">Dislike👎</button>
+            </div>
+
+            <ul id="post"></ul>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="voteScript.js"></script>
+</body>
+
+</html>

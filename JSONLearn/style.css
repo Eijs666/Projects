@@ -1,0 +1,39 @@
+body {
+    background-color: #171717;
+    color: white;
+    font-family: "poppins", sans-serif;
+}
+
+#navbar {
+    text-align: center;
+}
+
+#navbar ul {
+    padding: 0;
+
+    list-style: none;
+}
+
+#navbar li {
+    display: inline-block;
+}
+
+#navbar a {
+    color:white;
+    text-decoration: none;
+    font-size: 25px;
+    padding-right: 15px;
+}
+
+#post-container h2{
+    background-color: b;
+    color: #7ECA9C;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.posts {
+    background-color: black;
+    padding: 10px;
+    border-radius: 6px;
+}
