@@ -28,4 +28,8 @@ db.insert(empoyees, function(err, docs) {
     });
 });
 
-console.log(Date.getTime);
+db.find({kode: 1234}, function(err, docs) {
+    docs.forEach(function(d) {
+        console.log('Found user kode belongs to :', d.name);
+    });
+});
