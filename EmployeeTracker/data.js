@@ -20,8 +20,12 @@ var karat = {
 };
 
 
-
-//Insert the emplyees in array
+//Insert the emplyees in array - save users
 empoyees.push(ejaz, karat);
-db.insert(empoyees);
+db.insert(empoyees, function(err, docs) {
+    docs.forEach(function(d) {
+        console.log('Saved user:', d.kode);
+    });
+});
 
+console.log(Date.getTime);
