@@ -1,44 +1,16 @@
-//Notication
-const notification = document.getElementById("notification");
 //Notication texts
+const notification = document.getElementById("notification");
 let succes = "Succes";
 let fail = "fail";
-
-//Store passwords form json to this global array
-let users = [];
-
-//JSON DB Employees
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        
-        var response = JSON.parse(this.responseText);
-        var employees = response.employee;
-        
-        //Loop trough jsonDB
-        for (i = 0; i < employees.length; i++) {
-            
-            const _employee = employees[i]; //Save the employee to variable
-            users.push(_employee); //Push employee to users array
-        }
-    }
-};
-xmlhttp.open("GET", "employees.json", true);
-xmlhttp.send();
-
-let get_userName;
 
 //LOGIN - PASSWORD CHECKER
 function login()
 {
     inputPassword = document.getElementById("inputField").value;
-
     //Loop through passwords
     for (i = 0; i < users.length; i++) 
     {
         if(inputPassword == users[i].password){
-            get_userName = users[i].userName;
-            localStorage.setItem("id", timeCheckIn(get_userName));
 
             //Succes text notification
             notification.style.color = "green";
@@ -50,6 +22,8 @@ function login()
     }
 };
  
+  
+//Get timestamp
 function timeCheckIn(_userNameID){
 
     const d = new Date();
@@ -70,14 +44,6 @@ function timeCheckIn(_userNameID){
     //Add date + time
     userTime = (d.today() + " - " + d.timeNow());
     saveUser = _userNameID + " - " + userTime;
+    console.log(saveUser);
 
 }
-
-/*
-function showLoader(){
-    var loaderIcon = document.getElementById("loader");
-    loaderIcon.style.display = "block";
-    console.log("Loader!");
-}
-showLoader();
-*/
