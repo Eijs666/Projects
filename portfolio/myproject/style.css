@@ -30,9 +30,10 @@ main {
 
 #btnShoot{
 color: white;
-background-color: black;
+background-color: rgb(29, 29, 29);
 border: none;
 border-radius: 8px;
+padding: 10px;
 font-size: 50px;
 }
 #btnShoot:hover {

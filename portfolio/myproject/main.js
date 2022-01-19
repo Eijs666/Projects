@@ -23,7 +23,7 @@ const lavaTexture = new THREE.TextureLoader().load("lava.jpg");
 const blueLavaTexture = new THREE.TextureLoader().load("blueLava.jpg");
 
 // Objects ---
-// Planet Ring - Red Diamond
+// Planet Ring 1 - Red Diamond
 const planetRingGeometry = new THREE.TorusGeometry(20, 3, 2.5, 100);
 const planetRingMaterial = new THREE.MeshStandardMaterial({ map: redDiamond});
 const planetRing = new THREE.Mesh(planetRingGeometry, planetRingMaterial);
@@ -46,12 +46,29 @@ planetRing3.rotation.set(5,-0.6,0);
 scene.add(planetRing3);
 
 
-// Planet - Red Diamond
+// Planet 1 - Red Diamond
 const planetGeo = new THREE.SphereGeometry(12, 24, 24);
 const planetMat = planetRingMaterial;
 const planet = new THREE.Mesh(planetGeo, planetMat);
 planet.position.set(15,-2,-40);
 scene.add(planet);
+
+// Audio ---
+const listener = new THREE.AudioListener(); // Audiolistener
+planet.add(listener); // Add listener to an object
+
+const sound = new THREE.Audio(listener); // Global audio source
+
+// Load a sound - set audio to object's buffer
+const audioLoader = new THREE.AudioLoader();
+audioLoader.load("spaceAudio.mp4", function(buffer){
+  sound.setBuffer(buffer); // Set audio to a space in memory
+  sound.setLoop(true); // Loop audio
+  sound.setVolume(0.5); // Volume
+  sound.play(); // Play audio
+});
+
+
 
 // Planet 2 - Blue Lava
 const planet2Mat = new THREE.MeshBasicMaterial({map: blueLavaTexture});
@@ -75,7 +92,7 @@ function createStar(){
   const star = new THREE.Mesh(starGeometry, starMaterial);
 
   // Random star position
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(200));
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(500));
   // Sets random generated position to star position
   star.position.set(x, y, z);
   stars.push(star); // Push star 
@@ -87,7 +104,6 @@ stars = Array(0).fill().forEach(createStar);
 // Shooting Star ---
 var starShot; // Global variable to reference animation
 var isStarShot = false;
-console.log(isStarShot);
 function shootingStar(){
   randomNumber(); // Generate y float for this star
   const shootGeo = new THREE.SphereGeometry(1, 24, 24);
@@ -100,7 +116,7 @@ function shootingStar(){
   scene.add(starShot); //Display star
 
   isStarShot = true;
-console.log(isStarShot);
+  deleteObject(starShot);
 }
 // Get button reference
 const btnShoot = document.getElementById("btnShoot");
@@ -108,6 +124,14 @@ const btnShoot = document.getElementById("btnShoot");
 btnShoot.addEventListener("click", shootingStar);
 shootingStar();
 
+// Delete object (stars) - Maintain memory space
+function deleteObject(obj){
+  setTimeout(function() {
+    THREE.deleteObject(obj);
+    obj = deleteObject;
+    console.log("Deleted: " + obj);
+  }, 5000);
+};
 
 // Lights ---
 const pointLight = new THREE.PointLight(0xffffff);
