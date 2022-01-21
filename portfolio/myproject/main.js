@@ -75,7 +75,6 @@ const planet2Mat = new THREE.MeshBasicMaterial({map: blueLavaTexture});
 var planet2 = new THREE.Mesh(planetGeo, planet2Mat);
 planet2.position.set(-50, 30, -10);
 scene.add(planet2);
-// RING NOTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
 // Planet 3 - Lava
 const planet3Mat = new THREE.MeshBasicMaterial({map: lavaTexture });
@@ -116,7 +115,7 @@ function shootingStar(){
   scene.add(starShot); //Display star
 
   isStarShot = true;
-  deleteObject(starShot);
+//  deleteObject(starShot);
 }
 // Get button reference
 const btnShoot = document.getElementById("btnShoot");
@@ -124,7 +123,8 @@ const btnShoot = document.getElementById("btnShoot");
 btnShoot.addEventListener("click", shootingStar);
 shootingStar();
 
-// Delete object (stars) - Maintain memory space
+/*
+// DELETE object (stars) - Maintain memory space
 function deleteObject(obj){
   setTimeout(function() {
     THREE.deleteObject(obj);
@@ -132,6 +132,8 @@ function deleteObject(obj){
     console.log("Deleted: " + obj);
   }, 5000);
 };
+// HELLOOOOOOOOOOOOOOOOOOOOOOOO FIX DELETE
+*/
 
 // Lights ---
 const pointLight = new THREE.PointLight(0xffffff);

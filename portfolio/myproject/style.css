@@ -28,6 +28,10 @@ main {
   grid-template-columns: repeat(12, 1fr);
 }
 
+#info{
+  font-size: 18px;
+}
+
 #btnShoot{
 color: white;
 background-color: rgb(29, 29, 29);
