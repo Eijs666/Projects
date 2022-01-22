@@ -105,17 +105,17 @@ var starShot; // Global variable to reference animation
 var isStarShot = false;
 function shootingStar(){
   randomNumber(); // Generate y float for this star
-  const shootGeo = new THREE.SphereGeometry(1, 24, 24);
+  const shootGeo = new THREE.SphereGeometry(3, 24, 24);
   const shootMat = new THREE.MeshStandardMaterial({ color: "white" });
   const shootStar = new THREE.Mesh(shootGeo, shootMat);
   // Start position
-  shootStar.position.set(-700,0,-200);
+  shootStar.position.set(-1000,0,-700);
 
   starShot = shootStar; // Fill the empty star with new created star
   scene.add(starShot); //Display star
 
   isStarShot = true;
-//  deleteObject(starShot);
+// deleteObject(starShot);
 }
 // Get button reference
 const btnShoot = document.getElementById("btnShoot");
@@ -123,17 +123,16 @@ const btnShoot = document.getElementById("btnShoot");
 btnShoot.addEventListener("click", shootingStar);
 shootingStar();
 
-/*
+
 // DELETE object (stars) - Maintain memory space
 function deleteObject(obj){
   setTimeout(function() {
-    THREE.deleteObject(obj);
     obj = deleteObject;
     console.log("Deleted: " + obj);
   }, 5000);
 };
 // HELLOOOOOOOOOOOOOOOOOOOOOOOO FIX DELETE
-*/
+
 
 // Lights ---
 const pointLight = new THREE.PointLight(0xffffff);
@@ -181,7 +180,7 @@ function animate() {
   planet3.rotateY(0.001);
 
   if(isStarShot){
-    starShot.position.x += 5;
+    starShot.position.x += 10;
    starShot.position.y += randomNum;
   }else{
     return;
