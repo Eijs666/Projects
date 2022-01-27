@@ -28,6 +28,14 @@ main {
   grid-template-columns: repeat(12, 1fr);
 }
 
+h2{
+  color: #00ff00;
+}
+
+h4{
+  color: #ed2025;
+}
+
 #info{
   font-size: 18px;
 }

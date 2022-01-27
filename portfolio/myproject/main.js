@@ -175,8 +175,10 @@ function animate() {
   planetRing3.rotateZ(-0.001);
 
   // Planets Animations
-  planet.rotateY(0.001);
+  planet.rotateY(0.002);
   planet2.rotateY(0.001);
+  planet2.rotateX(0.002);
+  planet2.rotateZ(0.002);
   planet3.rotateY(0.001);
 
   if(isStarShot){
