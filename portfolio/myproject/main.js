@@ -18,9 +18,14 @@ camera.position.setX(0);
 renderer.render(scene, camera);
 
 // Planet Texture
-const redDiamond = new THREE.TextureLoader().load("redDiamond.jpg");
-const lavaTexture = new THREE.TextureLoader().load("lava.jpg");
-const blueLavaTexture = new THREE.TextureLoader().load("blueLava.jpg");
+import redD from './redDiamond.jpg'
+import lavaT from './lava.jpg'
+import blueLavaT from './blueLava.jpg'
+
+
+const redDiamond = new THREE.TextureLoader().load(redD);
+const lavaTexture = new THREE.TextureLoader().load(lavaT);
+const blueLavaTexture = new THREE.TextureLoader().load(blueLavaT);
 
 // Objects ---
 // Planet Ring 1 - Red Diamond
@@ -61,13 +66,13 @@ const sound = new THREE.Audio(listener); // Global audio source
 
 // Load a sound - set audio to object's buffer
 const audioLoader = new THREE.AudioLoader();
-audioLoader.load("spaceAudio.mp4", function(buffer){
+import spaceSound from './spaceAudio.mp4'
+audioLoader.load(spaceSound, function(buffer){
   sound.setBuffer(buffer); // Set audio to a space in memory
   sound.setLoop(true); // Loop audio
   sound.setVolume(0.5); // Volume
   sound.play(); // Play audio
 });
-
 
 
 // Planet 2 - Blue Lava
@@ -109,29 +114,24 @@ function shootingStar(){
   const shootMat = new THREE.MeshStandardMaterial({ color: "white" });
   const shootStar = new THREE.Mesh(shootGeo, shootMat);
   // Start position
-  shootStar.position.set(-1000,0,-700);
+  shootStar.position.set(-1500,10,-700);
 
   starShot = shootStar; // Fill the empty star with new created star
   scene.add(starShot); //Display star
 
-  isStarShot = true;
-// deleteObject(starShot);
+  isStarShot = true; // Star is being fired
+
 }
 // Get button reference
 const btnShoot = document.getElementById("btnShoot");
 // When button is clicked shoot a star
 btnShoot.addEventListener("click", shootingStar);
-shootingStar();
+
+//Shoot shoots repeat every 2 second
+setInterval(shootingStar, 2000);
 
 
-// DELETE object (stars) - Maintain memory space
-function deleteObject(obj){
-  setTimeout(function() {
-    obj = deleteObject;
-    console.log("Deleted: " + obj);
-  }, 5000);
-};
-// HELLOOOOOOOOOOOOOOOOOOOOOOOO FIX DELETE
+
 
 
 // Lights ---
@@ -142,7 +142,9 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
 // Background ---
-const spaceTexture = new THREE.TextureLoader().load("space.jpg");
+import spacebg from './space.jpg'
+const spaceTexture = new THREE.
+TextureLoader().load(spacebg);
 scene.background = spaceTexture;
 
 // Scroll Animation ---
@@ -187,17 +189,34 @@ function animate() {
   }else{
     return;
   }
-  
-  for (let index = 0; index < 11; index++) {
-   //const element = stars[index];
-   //console.log(element); //TEST
-   //element.position.x += 0.01;
- };
- 
+
   renderer.render(scene, camera);
 }
-
 animate();
+
+
+
+// Notfication
+function notfication(){
+  const container = document.getElementById("container");
+
+  const notif = document.createElement("div");
+  notif.classList.add("pop");
+  notif.innerText = "Turn on audio!";
+
+  container.appendChild(notif);
+
+  setTimeout(() => {
+    notif.remove();
+  }, 6000);  
+
+  setInterval
+}
+notfication();
+
+
+
+
 
 //Text
 /*
